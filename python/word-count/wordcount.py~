@@ -1,0 +1,8 @@
+
+def word_count(string):
+    result = []
+
+    for word in list(set(string.split(' '))):
+        result.append({word: string.count(word)
+    
+    return result
