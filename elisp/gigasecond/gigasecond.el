@@ -9,9 +9,8 @@
 
 ;;; Code:
 
-
-
-
+(defun from (seconds minutes hours day month year)
+  (butlast (decode-time (time-add (encode-time seconds minutes hours day month year "UTC") (expt 10 9)) "UTC") 3))
 
 
 
