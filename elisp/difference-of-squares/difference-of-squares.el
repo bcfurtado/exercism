@@ -4,14 +4,14 @@
 
 ;;; Code:
 
-(defun sum-of-squares (number)
-  (if (> number 1) (+ (expt number 2) (sum-of-squares(1- number)) ) 1))
+(defun square (number)
+  (expt number 2))
 
-(defun sum-of-numbers-up-to (number)
-  (if (> number 1) (+ number (sum-of-numbers-up-to(1- number)) ) 1))
+(defun sum-of-squares (number)
+  (apply '+ (mapcar 'square (number-sequence 1 number))))
 
 (defun square-of-sums (number)
-  (expt (sum-of-numbers-up-to number) 2))
+  (expt (apply '+ (number-sequence 1 number)) 2))
 
 (defun difference (number)
   (- (square-of-sums number) (sum-of-squares number)))
