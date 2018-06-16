@@ -10,7 +10,11 @@
 ;;; Code:
 
 (defun from (seconds minutes hours day month year)
-  (butlast (decode-time (time-add (encode-time seconds minutes hours day month year "UTC") (expt 10 9)) "UTC") 3))
+  (let* ((default-timezone "UTC")
+         (gigasecond (expt 10 9))
+         (start-time (encode-time seconds minutes hours day month year default-timezone)))
+    (butlast (decode-time (time-add start-time gigasecond) default-timezone) 3)
+    ))
 
 
 
