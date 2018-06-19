@@ -7,9 +7,8 @@ def detect_anagrams(word, candidates):
         for candidate in candidates
     }
     word_counter = Counter(word.lower())
+
     return sorted([
         candidate for candidate, counter in counters.iteritems()
-        if word_counter in counters.values()
-        and word_counter == counter
-        and word != candidate.upper()
+        if word_counter == counter and word != candidate.upper()
     ])
